@@ -126,13 +126,13 @@ export default {
         }
     },
     methods: {
-        finish () {
-            var today = new Date();
+ 
+                finish () {
             var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
             var today = new Date();
             var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
             var number = Math.floor(100000000 + Math.random() * 900000000);
-            this.$fires.ocorrencias.add({
+            this.$fires.OS.add({
                 number: number,
                 logradouro: this.logradouro,
                 ponto_referência: this.referencia,
@@ -186,7 +186,7 @@ export default {
 
         },
         goHome(){
-            this.$router.push('/ciods')
+            this.$router.push('/gerente')
         }
        
     }

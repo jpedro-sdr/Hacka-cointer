@@ -11,8 +11,9 @@
                 <v-flex xs12 sm6 md6 lg4 xl4 v-for="(ocorrencia, i) in ocorrencias" :key="i" style="padding: 5px; cursor: pointer" @click="goTo(ocorrencia)"  >  
                     <v-card
                         elevation-5
-                        style="border-radius: 10px;"
+                        style="border-radius: 10px; color:#ffd700"
                         class="mx-auto fonteCard"
+
                     >
                         <v-card-title  style="background: #E0E0E0">
                             <v-layout>
@@ -124,7 +125,8 @@ export default {
         }
     },
     created(){
- 
+         console.log(this.$store.getters.getUser)
+
     },
     methods: {
         goTo (ocorrencia) {

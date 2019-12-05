@@ -8,13 +8,13 @@
             </v-layout> -->
 
             <v-layout justify-center>
-                <v-flex xs12 align-self-center>
+                <v-flex xs12 align-self-center mt-8>
 
-                    <img class="logoImgXs hidden-sm-and-up" src="../../imagens/logo-novo.png" alt="">
-                    <img class="logoImgSm hidden-xs-only hidden-md-and-up" src="../../imagens/logo-novo.png" alt="">
-                    <img class="logoImgMd hidden-sm-and-down hidden-lg-and-up" src="../../imagens/logo-novo.png" alt="">
-                    <img class="logoImgLg hidden-md-and-down hidden-xl-only" src="../../imagens/logo-novo.png" alt="">
-                    <img class="logoImgXl hidden-lg-and-down" src="../../imagens/logo-novo.png" alt="">
+                    <img class="logoImgXs hidden-sm-and-up" src="../../imagens/mam.png" alt="">
+                    <img class="logoImgSm hidden-xs-only hidden-md-and-up" src="../../imagens/mam.png" alt="">
+                    <img class="logoImgMd hidden-sm-and-down hidden-lg-and-up" src="../../imagens/mam.png" alt="">
+                    <img class="logoImgLg hidden-md-and-down hidden-xl-only" src="../../imagens/mam.png" alt="">
+                    <img class="logoImgXl hidden-lg-and-down" src="../../imagens/mam.png" alt="">
                 </v-flex>
             </v-layout>
             <!-- 
@@ -32,7 +32,7 @@
                                 <form @submit.prevent="login()">
                                     <v-flex xs12>
                                         <v-autocomplete
-                                            label="Nome do órgão"
+                                            label="Usuário"
                                             :items="orgaos"
                                             v-model="cod"
                                             style="border-radius: 0px"
@@ -66,7 +66,7 @@
                                     
                                     <v-layout>
                                         <v-flex xs6 mr-1>
-                                            <v-btn type="submit" rounded depressed outlined height="56" color="#fff" style="background-color: #3C78D8; border: 1px solid #C2C2C2; width: 100%;" dark :loading="loading">
+                                            <v-btn type="submit" rounded depressed outlined height="56" color="#fff" style="background-color: #ffd700; border: 1px solid #C2C2C2; width: 100%;" dark :loading="loading">
                                                 Entrar
                                                 <span slot="loader" class="custom-loader">
                                                     <v-icon style="color: white">cached</v-icon>
@@ -97,20 +97,17 @@
     </div>
 </template>
 <script>
-import axios from 'axios'
-import gps from '../components/Gps'
+// import axios from 'axios'
+// import gps from '../components/Gps'
 export default {
     components:{
-        gps:gps
+        // gps:gps
     },
-    name: 'login',
+    name: 'Login',
     data(){
         return{
-            loading: false,
-            cod: '',
-            lat:'',
-            lon:'',
-            orgaos: ['ciods', 'bombeiro', 'bptran', 'cttu', 'pm', 'prf', 'samu']
+          
+            orgaos: ['Gerente','Técnico']
         }
     },
     mounted(){
@@ -118,12 +115,7 @@ export default {
     },
     computed: {
     },
-    beforeCreate(){
-        
-        
-
-
-    },
+  
     watch: {
     },
     methods: {
@@ -132,36 +124,36 @@ export default {
             var self = this
             this.loading = true
             setTimeout(function(){ 
-                if (self.cod !== 'ciods'){
-                    self.$router.push('/ocorrencias')
+                if (self.cod !== 'Gerente'){
+                    self.$router.push('/tecnico')
                 }else {
-                    console.log(self.$router.push('/ciods'))
+                    self.$router.push('/gerente')
                 }
                 
              }, 1000);
         },
-        getGeoLocation(){
-            var options = {
-            enableHighAccuracy: true,
-            timeout: 5000,
-            maximumAge: 0
-            };
+        // getGeoLocation(){
+        //     var options = {
+        //     enableHighAccuracy: true,
+        //     timeout: 5000,
+        //     maximumAge: 0
+        //     };
 
-            function success(pos) {
-            var crd = pos.coords;
+        //     function success(pos) {
+        //     var crd = pos.coords;
 
-            console.log('Sua posição atual é:');
-            console.log('Latitude : ' + crd.latitude);
-            console.log('Longitude: ' + crd.longitude);
-            console.log('Mais ou menos ' + crd.accuracy + ' metros.');
-            };
+        //     console.log('Sua posição atual é:');
+        //     console.log('Latitude : ' + crd.latitude);
+        //     console.log('Longitude: ' + crd.longitude);
+        //     console.log('Mais ou menos ' + crd.accuracy + ' metros.');
+        //     };
 
-            function error(err) {
-            console.warn('ERROR(' + err.code + '): ' + err.message);
-            };
+        //     function error(err) {
+        //     console.warn('ERROR(' + err.code + '): ' + err.message);
+        //     };
 
-            navigator.geolocation.getCurrentPosition(success, error, options);
-        }
+        //     navigator.geolocation.getCurrentPosition(success, error, options);
+        // }
        
       
 	}
